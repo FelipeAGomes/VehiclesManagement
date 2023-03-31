@@ -20,6 +20,11 @@ public class UserServices {
 
 	}
 
+	public User findByEmail(String email){
+		Optional<User> obj = repository.findByEmail(email);
+		return obj.get();
+	}
+
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
 		return obj.get();
