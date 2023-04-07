@@ -32,9 +32,9 @@ public class UserController {
 
 	}
 
-	@GetMapping(value = "/login/{email}")
-	public ResponseEntity<User> findByEmail(@PathVariable String email){
-		User obj = service.findByEmail(email);
+	@GetMapping(value = "/login/{email}&{password}")
+	public ResponseEntity<User> findByEmail(@PathVariable String email, @PathVariable String password){
+		User obj = service.findByEmail(email, password);
 		return ResponseEntity.ok().body(obj);
 	}
 

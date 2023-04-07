@@ -20,8 +20,8 @@ public class UserServices {
 
 	}
 
-	public User findByEmail(String email){
-		Optional<User> obj = repository.findByEmail(email);
+	public User findByEmail(String email, String password){
+		Optional<User> obj = repository.findByEmail(email, password);
 		return obj.get();
 	}
 
