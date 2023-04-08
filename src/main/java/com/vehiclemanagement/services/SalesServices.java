@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vehiclemanagement.entities.Sales;
+import com.vehiclemanagement.entities.User;
 import com.vehiclemanagement.repositories.SalesRepository;
 
 @Service
@@ -24,6 +25,10 @@ public class SalesServices {
 		Optional<Sales> obj = repository.findById(id);
 		return obj.get();
 
+	}
+
+	public List<Sales> findByUser(User user){
+		return repository.findByUser(user);
 	}
 
 	public Sales insert(Sales obj) {

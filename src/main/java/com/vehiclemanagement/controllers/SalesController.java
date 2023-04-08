@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.vehiclemanagement.entities.Sales;
+import com.vehiclemanagement.entities.User;
 import com.vehiclemanagement.services.SalesServices;
 
 @RestController
@@ -30,6 +31,12 @@ public class SalesController {
 		List<Sales> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 
+	}
+
+	@GetMapping(value = "/user/{id}")
+	public ResponseEntity<List<Sales>> findByUser(User user){
+		List<Sales> list = service.findByUser(user);
+		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping(value = "/{id}")
