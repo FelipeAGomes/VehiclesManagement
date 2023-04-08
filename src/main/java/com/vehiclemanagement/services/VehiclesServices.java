@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.vehiclemanagement.entities.User;
 import com.vehiclemanagement.entities.Vehicles;
 import com.vehiclemanagement.repositories.VehiclesRepository;
 
@@ -24,6 +25,10 @@ public class VehiclesServices {
 		Optional<Vehicles> obj = repository.findById(id);
 		return obj.get();
 
+	}
+
+	public List<Vehicles> findByUser(User user){
+		return repository.findByUser(user);
 	}
 
 	public Vehicles insert(Vehicles obj) {

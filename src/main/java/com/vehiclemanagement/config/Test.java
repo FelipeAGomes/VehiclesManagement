@@ -34,7 +34,7 @@ public class Test implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		User user1 = new User(null, "Rogerio", "Gomes", "rogerAuto@gmail.com", "1234");
+		User user1 = new User(null, "Rogerio", "Gomes", "test@test.com", "1234");
 
 		Sales sales1 = new Sales(null, 8000.0, Instant.parse("2023-02-20T19:53:07Z"), 5000.0, user1);
 		Sales sales2 = new Sales(null, 98000.0, Instant.parse("2023-02-20T19:53:07Z"), 3500.0, user1);

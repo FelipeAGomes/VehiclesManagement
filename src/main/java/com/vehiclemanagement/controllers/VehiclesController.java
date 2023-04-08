@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.vehiclemanagement.entities.User;
 import com.vehiclemanagement.entities.Vehicles;
 import com.vehiclemanagement.services.VehiclesServices;
 
@@ -30,6 +31,12 @@ public class VehiclesController {
 		List<Vehicles> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 
+	}
+
+	@GetMapping(value = "/user/{id}")
+	public ResponseEntity<List<Vehicles>> findByUser(User user){
+		List<Vehicles> list = service.findByUser(user);
+		return ResponseEntity.ok().body(list);
 	}
 
 	@GetMapping(value = "/{id}")

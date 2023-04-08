@@ -32,6 +32,7 @@ public class Vehicles implements Serializable {
 	private Double costPrice;
 	
 	@OneToMany(mappedBy = "vehicles")
+	@JsonIgnore
 	private List<ExtraCost> extraCost = new ArrayList<>();
 	
 	// import from enum
