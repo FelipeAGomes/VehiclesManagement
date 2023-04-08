@@ -32,7 +32,6 @@ public class Vehicles implements Serializable {
 	private Double costPrice;
 	
 	@OneToMany(mappedBy = "vehicles")
-	@JsonIgnore
 	private List<ExtraCost> extraCost = new ArrayList<>();
 	
 	// import from enum
@@ -82,6 +81,15 @@ public class Vehicles implements Serializable {
 			sum += x.getTotalCost();
 		}	
 		return costPrice + sum;
+	}
+
+	//TOTAL EXTRA COST
+	public Double getTotalExtraCost() {
+		double sum = 0.0;
+		for(ExtraCost x : extraCost) {
+			sum += x.getTotalCost();
+		}	
+		return sum;
 	}
 
 	// User getter and setter
