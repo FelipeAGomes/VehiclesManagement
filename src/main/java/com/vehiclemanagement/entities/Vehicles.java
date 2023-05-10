@@ -39,7 +39,7 @@ public class Vehicles implements Serializable {
 
 	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "userid")
 	private User user;
 
 	@JsonIgnore
