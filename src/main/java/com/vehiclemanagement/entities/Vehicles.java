@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vehiclemanagement.entities.enums.Status;
 
@@ -37,9 +39,13 @@ public class Vehicles implements Serializable {
 	// import from enum
 	private Integer status;
 
-	@JsonIgnore
+	// @JsonBackReference to stop infinite loop and @JsonManagedReference on class user
+	// @JsonManagedReference annotation for the first objects instantiated
+	// @JsonBackReference annotation for the second objects instantiated
+	
+	@JsonBackReference
 	@ManyToOne
-	@JoinColumn(name = "userid")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@JsonIgnore

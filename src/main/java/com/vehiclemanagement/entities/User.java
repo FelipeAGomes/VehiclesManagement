@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "tb_user")
@@ -25,11 +29,15 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 	
+	// @JsonManagedReference to stop infinite loop and @JsonBackReference on class vehicles
+	// @JsonManagedReference annotation for the first objects instantiated
+	// @JsonBackReference annotation for the second objects instantiated
 	
-	@OneToMany(mappedBy ="user")
+	@JsonManagedReference
+	@OneToMany(mappedBy ="user", cascade = CascadeType.ALL)
 	private List<Vehicles> vehicles = new ArrayList<>();
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL)
 	private List<Sales> sales = new ArrayList<>();
 
 	public User() {
